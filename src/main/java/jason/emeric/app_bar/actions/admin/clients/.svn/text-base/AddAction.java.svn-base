@@ -1,0 +1,69 @@
+package fr.esstin.baresstin.actions.admin.clients;
+
+import javax.ejb.EJB;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import fr.esstin.baresstin.dto.ClientDto;
+import fr.esstin.baresstin.service.ClientServiceLocal;
+
+public class AddAction extends ActionSupport{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private ClientDto client;
+	
+	String tests;
+	
+	@EJB
+	private ClientServiceLocal clientService;
+	
+	public String execute() {		
+		return "success";
+	}
+
+	@Action(value = "addclient", results = {
+			@Result(name = "success", type = "redirect", location = "list"),
+			@Result(name = "input", location = "add") })
+	public String deleteproduct() {
+		
+		System.out.println("client first  : "+client.isContributor());
+		clientService.add(client);
+		return "success";
+	}
+
+	
+	/**
+	 * @return the client
+	 */
+	public ClientDto getClient() {
+		return client;
+	}
+
+	/**
+	 * @param client the client to set
+	 */
+	public void setClient(ClientDto client) {
+		this.client = client;
+	}
+
+	/**
+	 * @return the tests
+	 */
+	public String getTests() {
+		return tests;
+	}
+
+	/**
+	 * @param tests the tests to set
+	 */
+	public void setTests(String tests) {
+		this.tests = tests;
+	}
+
+}

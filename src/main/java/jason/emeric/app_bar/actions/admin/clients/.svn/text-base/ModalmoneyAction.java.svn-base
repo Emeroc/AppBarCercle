@@ -1,0 +1,87 @@
+package fr.esstin.baresstin.actions.admin.clients;
+
+import java.math.BigDecimal;
+
+import javax.ejb.EJB;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+
+import fr.esstin.baresstin.dto.BalanceHistoryDto;
+import fr.esstin.baresstin.dto.ClientDto;
+import fr.esstin.baresstin.service.ClientServiceLocal;
+
+public class ModalmoneyAction extends ActionSupport{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@EJB
+	private ClientServiceLocal clientsService;
+	
+	private BalanceHistoryDto balance;
+	
+	private ClientDto client;
+	
+	public String execute() {
+		try{
+			Long clientId = new Long(((String[]) ActionContext.getContext().getParameters().get("id"))[0]);		
+			setClient(clientsService.findClientById(clientId.longValue()));
+			}
+			catch (NullPointerException e)
+			{
+				
+			}
+			return "success";		
+	}
+	
+	@Action(value = "addbalance", results = {
+			@Result(name = "success", type = "redirect", location = "list"),
+			@Result(name = "input", location = "list") })
+	public String deleteproduct() {
+		Long clientId = new Long(((String[]) ActionContext.getContext()
+				.getParameters().get("id"))[0]);
+		client = clientsService.findClientById(clientId);
+		if (client.isContributor()==true)
+			balance.setPrice(balance.getPrice().multiply(new BigDecimal(1.1)));
+		boolean check = false;
+		if(balance.getStatus()==4)
+			check=true;		
+		clientsService.addBalance(clientId, balance.getPrice(), check);
+		return "success";
+	}
+
+	/**
+	 * @return the balance
+	 */
+	public BalanceHistoryDto getBalance() {
+		return balance;
+	}
+
+	/**
+	 * @param balance the balance to set
+	 */
+	public void setBalance(BalanceHistoryDto balance) {
+		this.balance = balance;
+	}
+
+	/**
+	 * @return the client
+	 */
+	public ClientDto getClient() {
+		return client;
+	}
+
+	/**
+	 * @param client the client to set
+	 */
+	public void setClient(ClientDto client) {
+		this.client = client;
+	}
+
+}

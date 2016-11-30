@@ -1,4 +1,3 @@
-package fr.esstin.baresstin.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

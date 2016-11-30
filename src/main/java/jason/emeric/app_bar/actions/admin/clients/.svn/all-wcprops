@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn-cours/GA4/!svn/ver/174/BarEsstin/BarEsstinWeb/src/fr/esstin/baresstin/actions/admin/clients
+END
+ClienthistoryAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn-cours/GA4/!svn/ver/215/BarEsstin/BarEsstinWeb/src/fr/esstin/baresstin/actions/admin/clients/ClienthistoryAction.java
+END
+ModaldeleteAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn-cours/GA4/!svn/ver/224/BarEsstin/BarEsstinWeb/src/fr/esstin/baresstin/actions/admin/clients/ModaldeleteAction.java
+END
+AjaxLDAPAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn-cours/GA4/!svn/ver/174/BarEsstin/BarEsstinWeb/src/fr/esstin/baresstin/actions/admin/clients/AjaxLDAPAction.java
+END
+ModalmoneyAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn-cours/GA4/!svn/ver/221/BarEsstin/BarEsstinWeb/src/fr/esstin/baresstin/actions/admin/clients/ModalmoneyAction.java
+END
+ModalclienteditAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn-cours/GA4/!svn/ver/215/BarEsstin/BarEsstinWeb/src/fr/esstin/baresstin/actions/admin/clients/ModalclienteditAction.java
+END
+AddAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn-cours/GA4/!svn/ver/174/BarEsstin/BarEsstinWeb/src/fr/esstin/baresstin/actions/admin/clients/AddAction.java
+END
+ListAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn-cours/GA4/!svn/ver/174/BarEsstin/BarEsstinWeb/src/fr/esstin/baresstin/actions/admin/clients/ListAction.java
+END
