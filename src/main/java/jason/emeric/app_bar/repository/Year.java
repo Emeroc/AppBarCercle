@@ -1,4 +1,5 @@
-package fr.esstin.baresstin;
+package jason.emeric.app_bar.repository;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

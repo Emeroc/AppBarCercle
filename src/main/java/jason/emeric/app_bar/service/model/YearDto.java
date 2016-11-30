@@ -1,4 +1,5 @@
-package fr.esstin.baresstin.dto;
+package jason.emeric.app_bar.service.model;
+
 
 public class YearDto {
 	

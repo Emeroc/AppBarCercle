@@ -9,9 +9,14 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import jason.emeric.app_bar.repository.BalanceHistory;
 import jason.emeric.app_bar.repository.IUserRepository;
 import jason.emeric.app_bar.repository.UserEntity;
+import jason.emeric.app_bar.repository.Year;
+import jason.emeric.app_bar.service.exception.UserDoesntExistException;
+import jason.emeric.app_bar.service.model.BalanceHistoryDto;
 import jason.emeric.app_bar.service.model.UserDto;
+import jason.emeric.app_bar.service.model.YearDto;
 
 @Stateless
 public class UserService implements IUserService /*ClietnServiceLocal*/ {
@@ -21,7 +26,7 @@ public class UserService implements IUserService /*ClietnServiceLocal*/ {
 		private IUserRepository UserRep;//private ClientDao clientDao;
 
 		@EJB
-		private MailServiceLocal mailService;
+		private MailService mailService;
 
 		@Override
 		public boolean add(UserDto c) {
@@ -150,7 +155,7 @@ public class UserService implements IUserService /*ClietnServiceLocal*/ {
 		}
 
 		@Override
-		public UserDto findClientById(long id) {
+		public UserDto findById(long id) {
 			UserEntity existingClient = UserRep.findById(id);
 
 			if (existingClient == null) {
@@ -160,8 +165,8 @@ public class UserService implements IUserService /*ClietnServiceLocal*/ {
 		}
 
 		@Override
-		public UserDto findClientByIdOrCreateGuest(long id, String name) {
-			UserDto client = findClientById(id);
+		public UserDto findByIdOrCreateGuest(long id, String name) {
+			UserDto client = findById(id);
 
 			if (client == null) {
 				client = new UserDto();
@@ -176,7 +181,7 @@ public class UserService implements IUserService /*ClietnServiceLocal*/ {
 			UserEntity existingClient = UserRep.findById(id);
 
 			if (existingClient == null) {
-				throw new ClientDoesntExistException("Client " + id
+				throw new UserDoesntExistException("Client " + id
 						+ " doesn't exist");
 			}
 			UserRep.delete(existingClient);
@@ -212,7 +217,7 @@ public class UserService implements IUserService /*ClietnServiceLocal*/ {
 			UserEntity existingClient = UserRep.findById(c.getId());
 
 			if (existingClient == null) {
-				throw new ClientDoesntExistException("Client " + c.getId()
+				throw new UserDoesntExistException("Client " + c.getId()
 						+ " doesn't exist");
 			}
 
@@ -227,10 +232,10 @@ public class UserService implements IUserService /*ClietnServiceLocal*/ {
 			UserEntity existingClient = UserRep.findById(cId);
 
 			if (price.doubleValue() <= 0)
-				throw new ClientDoesntExistException("price " + price.intValue()
+				throw new UserDoesntExistException("price " + price.intValue()
 						+ " is negative");
 			if (existingClient == null) {
-				throw new ClientDoesntExistException("Client " + cId
+				throw new UserDoesntExistException("Client " + cId
 						+ " doesn't exist");
 			}
 			/*
@@ -296,17 +301,17 @@ public class UserService implements IUserService /*ClietnServiceLocal*/ {
 		}
 
 		@Override
-		public UserDto findClientByLogin(String login)
-				throws ClientDoesntExistException {
+		public UserDto findByLogin(String login)
+				throws UserDoesntExistException {
 			if (login.isEmpty())
-				throw new ClientDoesntExistException("Client " + login
+				throw new UserDoesntExistException("Client " + login
 						+ " doesn't exist");
 			if (login.length() < 1)
-				throw new ClientDoesntExistException("Client " + login
+				throw new UserDoesntExistException("Client " + login
 						+ " doesn't exist");
-			Client c = UserRep.findClientByLogin(login);
+			UserEntity c = UserRep.findByLogin(login);
 			if (c == null)
-				throw new ClientDoesntExistException("Client " + login
+				throw new UserDoesntExistException("Client " + login
 						+ " doesn't exist");
 			return fromEntity(c);
 		}
@@ -325,4 +330,4 @@ public class UserService implements IUserService /*ClietnServiceLocal*/ {
 		}
 	}
 
-}
+

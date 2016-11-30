@@ -3,7 +3,10 @@ package jason.emeric.app_bar.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import jason.emeric.app_bar.service.exception.UserDoesntExistException;
+import jason.emeric.app_bar.service.model.BalanceHistoryDto;
 import jason.emeric.app_bar.service.model.UserDto;
+import jason.emeric.app_bar.service.model.YearDto;
 
 public interface IUserService {
 

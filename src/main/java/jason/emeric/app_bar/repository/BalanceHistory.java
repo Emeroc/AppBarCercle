@@ -1,4 +1,5 @@
-package fr.esstin.baresstin;
+package jason.emeric.app_bar.repository;
+
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -40,7 +41,7 @@ public class BalanceHistory {
 	
 	@ManyToOne
 	@JoinColumn(name="clientId")
-	private Client client;
+	private UserEntity client;
 	
 	private String admin;
 
@@ -117,14 +118,14 @@ public class BalanceHistory {
 	/**
 	 * @return the client
 	 */
-	public Client getClient() {
+	public UserEntity getClient() {
 		return client;
 	}
 
 	/**
 	 * @param client the client to set
 	 */
-	public void setClient(Client client) {
+	public void setClient(UserEntity client) {
 		this.client = client;
 	}
 
