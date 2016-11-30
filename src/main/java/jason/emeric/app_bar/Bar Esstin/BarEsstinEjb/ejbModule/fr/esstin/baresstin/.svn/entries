@@ -1,0 +1,34 @@
+10
+
+dir
+206
+http://cours.dledanseur.fr/svn-cours/GA4/BarEsstin/BarEsstinEjb/ejbModule/fr/esstin/baresstin
+http://cours.dledanseur.fr/svn-cours/GA4
+
+
+
+2013-02-22T20:12:19.496983Z
+184
+clement37u
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+96e3c869-0d52-405b-81b8-25963bbcaa7d
+
+dao
+dir
+
+service
+dir
+

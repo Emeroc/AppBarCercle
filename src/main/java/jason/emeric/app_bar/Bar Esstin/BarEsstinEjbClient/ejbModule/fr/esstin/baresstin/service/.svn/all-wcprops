@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn-cours/GA4/!svn/ver/183/BarEsstin/BarEsstinEjbClient/ejbModule/fr/esstin/baresstin/service
+END
+LDAPServiceLocal.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn-cours/GA4/!svn/ver/174/BarEsstin/BarEsstinEjbClient/ejbModule/fr/esstin/baresstin/service/LDAPServiceLocal.java
+END
+ProductServiceLocal.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn-cours/GA4/!svn/ver/217/BarEsstin/BarEsstinEjbClient/ejbModule/fr/esstin/baresstin/service/ProductServiceLocal.java
+END
+MenuServiceLocal.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn-cours/GA4/!svn/ver/150/BarEsstin/BarEsstinEjbClient/ejbModule/fr/esstin/baresstin/service/MenuServiceLocal.java
+END
+AdminServiceLocal.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn-cours/GA4/!svn/ver/175/BarEsstin/BarEsstinEjbClient/ejbModule/fr/esstin/baresstin/service/AdminServiceLocal.java
+END
+OrderServiceLocal.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn-cours/GA4/!svn/ver/213/BarEsstin/BarEsstinEjbClient/ejbModule/fr/esstin/baresstin/service/OrderServiceLocal.java
+END
+ClientServiceLocal.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn-cours/GA4/!svn/ver/223/BarEsstin/BarEsstinEjbClient/ejbModule/fr/esstin/baresstin/service/ClientServiceLocal.java
+END

@@ -1,0 +1,93 @@
+package fr.esstin.baresstin.dao.impl;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import fr.esstin.baresstin.OrderItem;
+import fr.esstin.baresstin.Order;
+import fr.esstin.baresstin.dao.OrderDao;
+
+public class OrderDaoImpl implements OrderDao {
+	
+	@PersistenceContext
+	private EntityManager em;
+	
+	@Override
+	public void save(Order o) {
+		em.persist(o);
+		em.flush();
+	}
+
+	@Override
+	public Order findById(long id) {
+		TypedQuery<Order> q = em.createQuery("SELECT o FROM Order o WHERE o.id=:id", Order.class);
+		q.setParameter("id", id);
+		try {
+			return q.getSingleResult();
+		}
+		catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<Order> list() {
+		TypedQuery<Order> q = em.createQuery("SELECT o FROM Order o", Order.class);
+		return q.getResultList();
+	}
+
+	@Override
+	public List<Order> list(int offset, int limit) {
+		TypedQuery<Order> q = em.createQuery("SELECT o FROM Order o ORDER BY o.datePlaced DESC", Order.class);
+		q.setFirstResult(offset)
+		 .setMaxResults(limit);
+		return q.getResultList();
+	}
+
+	@Override
+	public List<Order> listPendingOrders() {
+		TypedQuery<Order> q = em.createQuery("SELECT o FROM Order o WHERE o.status='pending' OR o.status='partial' ORDER BY o.datePlaced ASC", Order.class);
+		return q.getResultList();
+	}
+	
+	@Override
+	public List<OrderItem> listPendingOrderItems() {
+		TypedQuery<OrderItem> q = em.createQuery("SELECT oi FROM OrderItem oi WHERE oi.delivered=false ORDER BY oi.order.datePlaced ASC", OrderItem.class);
+		return q.getResultList();
+	}
+
+	@Override
+	public void delete(Order existingOrder) {
+		em.remove(existingOrder);
+	}
+	
+	@Override
+	public boolean isOrderCompleted(long id) {
+		Query q = em.createQuery("SELECT oi FROM OrderItem oi WHERE oi.delivered=false AND oi.order.id=:id");
+		q.setParameter("id", id);
+		return q.getResultList().size() == 0;
+	}
+	
+	@Override
+	public OrderItem findItemById(long id) {
+		TypedQuery<OrderItem> q = em.createQuery("SELECT oi FROM OrderItem oi WHERE oi.id=:id", OrderItem.class);
+		q.setParameter("id", id);
+		try {
+			return q.getSingleResult();
+		}
+		catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public void deleteOrderItem(OrderItem existingOrderItem) {
+		em.remove(existingOrderItem);
+	}
+
+}

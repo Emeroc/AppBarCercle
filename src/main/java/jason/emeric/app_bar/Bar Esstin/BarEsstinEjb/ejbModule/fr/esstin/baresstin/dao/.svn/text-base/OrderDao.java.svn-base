@@ -1,0 +1,30 @@
+package fr.esstin.baresstin.dao;
+
+import java.util.List;
+
+import fr.esstin.baresstin.OrderItem;
+import fr.esstin.baresstin.Order;
+
+public interface OrderDao {
+
+	public void save(Order o);
+	
+	public Order findById(long id);
+
+	public List<Order> list();
+
+	public List<Order> list(int offset, int limit);
+
+	public List<Order> listPendingOrders();
+
+	public List<OrderItem> listPendingOrderItems();
+
+	public void delete(Order existingOrder);
+	
+	public OrderItem findItemById(long id);
+	
+	public boolean isOrderCompleted(long id);
+	
+	public void deleteOrderItem(OrderItem existingOrderItem);
+
+}
