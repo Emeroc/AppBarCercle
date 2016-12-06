@@ -1,3 +1,0 @@
-struts.custom.i18n.resources = messages
-struts.devMode = false
-struts.i18n.reload = true
