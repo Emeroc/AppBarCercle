@@ -8,6 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
+import jason.emeric.app_bar.Model.UserDto;
 import jason.emeric.app_bar.Service.IUserService;
 
 
