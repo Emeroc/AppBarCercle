@@ -4,6 +4,5 @@ public interface IUserService {
 
 	void addUser();
 
-	Object getUser();
 
 }
