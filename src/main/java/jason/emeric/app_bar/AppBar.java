@@ -1,5 +1,9 @@
 package jason.emeric.app_bar;
 
-public class AppBar {
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
+@ApplicationPath("/")
+public class AppBar extends Application{
 
 }
